@@ -81,6 +81,8 @@ O aplicativo não foi publicado em produção nem disponibilizado para usuários
 - [Fluxo do Usuário](docs/fluxo-usuario.md)
 - [Regras de Negócio](docs/regras-de-negocio.md)
 - [Modelo de Dados (Firebase)](docs/modelo-de-dados.md)
+- [Escopo e Restrições](docs/escopo-e-restricoes.md)
+- [Decisões Técnicas](docs/decisoes-tecnicas.md)
 
 
 ---
