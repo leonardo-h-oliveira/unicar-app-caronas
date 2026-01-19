@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Dict, Any
 
 
+
 class JsonRepository:
     """
     Persistência simples para demonstrar lógica do sistema.
