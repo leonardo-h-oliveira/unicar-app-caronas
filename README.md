@@ -79,6 +79,9 @@ O aplicativo não foi publicado em produção nem disponibilizado para usuários
 - [Funcionalidades](docs/funcionalidades.md)
 - [Arquitetura](docs/arquitetura.md)
 - [Fluxo do Usuário](docs/fluxo-usuario.md)
+- [Regras de Negócio](docs/regras-de-negocio.md)
+- [Modelo de Dados (Firebase)](docs/modelo-de-dados.md)
+
 
 ---
 
