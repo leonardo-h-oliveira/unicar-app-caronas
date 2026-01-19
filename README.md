@@ -74,6 +74,13 @@ O aplicativo não foi publicado em produção nem disponibilizado para usuários
 
 ---
 
+## Core Logic em Python (Portfólio)
+Além do protótipo no App Inventor, este repositório contém uma implementação em Python
+da lógica central do sistema (gestão de vagas, entrada/saída e cancelamento).
+Veja: `core_python/`
+
+---
+
 ## Documentação
 - [Visão Geral](docs/visao-geral.md)
 - [Funcionalidades](docs/funcionalidades.md)
