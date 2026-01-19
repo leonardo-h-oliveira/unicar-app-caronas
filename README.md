@@ -74,6 +74,14 @@ O aplicativo não foi publicado em produção nem disponibilizado para usuários
 
 ---
 
+## Documentação
+- [Visão Geral](docs/visao-geral.md)
+- [Funcionalidades](docs/funcionalidades.md)
+- [Arquitetura](docs/arquitetura.md)
+- [Fluxo do Usuário](docs/fluxo-usuario.md)
+
+---
+
 ## Autor
 Leonardo Henrique Oliveira 
 BICT – UNIFAL-MG
