@@ -1,99 +1,115 @@
-# unicar-app-caronas
-Protótipo de aplicativo de caronas universitárias desenvolvido como TCC no BICT - UNIFAL-MG
+unicar-app-carpooling
 
-# UniCar – Aplicativo de Caronas Universitárias
+Prototype of a university carpooling application developed as a Final Undergraduate Project (TCC) in the BICT program – UNIFAL-MG
 
-## Contexto
-O UniCar é um protótipo funcional de aplicativo de caronas desenvolvido como Trabalho de Conclusão de Curso
-no Bacharelado Interdisciplinar em Ciência e Tecnologia (BICT) da Universidade Federal de Alfenas (UNIFAL-MG).
+UniCar – University Carpooling Application
+Context
 
-O projeto teve como objetivo aplicar conceitos de lógica de programação, desenvolvimento de sistemas e
-modelagem de dados em um problema real da comunidade universitária.
+UniCar is a functional prototype of a carpooling application developed as a Final Undergraduate Project (TCC)
+in the Interdisciplinary Bachelor’s Degree in Science and Technology (BICT) at the Federal University of Alfenas (UNIFAL-MG).
 
----
+The project aimed to apply concepts of programming logic, systems development, and data modeling to a real problem within the university community.
 
-## Problema
-Estudantes universitários enfrentam dificuldades relacionadas à mobilidade, como:
-- Alto custo de transporte individual
-- Falta de integração entre estudantes que realizam trajetos semelhantes
-- Pouca previsibilidade e segurança em caronas informais
+Problem
 
----
+University students face mobility-related challenges such as:
 
-## Solução Proposta
-Desenvolvimento de um aplicativo que permite:
-- Cadastro e autenticação de usuários
-- Oferta e busca de caronas
-- Gerenciamento de vagas disponíveis em veículos
-- Controle da disponibilidade de caronas em tempo real
+High cost of individual transportation
 
-O sistema foi concebido como um protótipo acadêmico funcional, com foco na lógica de negócio e na
-estruturação do fluxo de dados.
+Lack of integration among students who share similar routes
 
----
+Low predictability and safety in informal carpooling arrangements
 
-## Funcionalidades Implementadas
-- Cadastro de usuários
-- Login com autenticação
-- Criação, edição e remoção de ofertas de carona
-- Inserção e remoção de passageiros
-- Controle automático de vagas disponíveis
-- Integração com banco de dados em nuvem (Firebase)
+Proposed Solution
 
----
+Development of an application that allows:
 
-## Tecnologias Utilizadas
-- MIT App Inventor
-- Firebase Authentication
-- Firebase Realtime Database
-- Lógica de programação em blocos
+User registration and authentication
 
----
+Offering and searching for carpools
 
-## Arquitetura e Fluxo do Sistema
-O aplicativo foi estruturado com separação entre interface do usuário, lógica de negócio e camada de dados.
-A comunicação com o Firebase permite o armazenamento e a recuperação das informações de usuários, caronas
-e disponibilidade de vagas.
+Management of available seats in vehicles
 
-                                                                      *(Diagramas e imagens do fluxo)*
+Real-time control of carpool availability
 
----
+The system was designed as a functional academic prototype, focusing on business logic and data flow structuring.
 
-## Status do Projeto
-Protótipo funcional desenvolvido em contexto acadêmico. 
-O aplicativo não foi publicado em produção nem disponibilizado para usuários finais.
+Implemented Features
 
----
+User registration
 
-## Principais Aprendizados
-- Modelagem de sistemas orientados a problema real
-- Implementação de autenticação e controle de usuários
-- Estruturação de regras de negócio
-- Integração com banco de dados em nuvem
-- Organização de um projeto de desenvolvimento do início ao fim
+Login with authentication
 
----
+Creation, editing, and removal of carpool offers
 
-## Core Logic em Python (Portfólio)
-Além do protótipo no App Inventor, este repositório contém uma implementação em Python
-da lógica central do sistema (gestão de vagas, entrada/saída e cancelamento).
-Veja: `core_python/`
+Addition and removal of passengers
 
----
+Automatic control of available seats
 
-## Documentação
-- [Visão Geral](docs/visao-geral.md)
-- [Funcionalidades](docs/funcionalidades.md)
-- [Arquitetura](docs/arquitetura.md)
-- [Fluxo do Usuário](docs/fluxo-usuario.md)
-- [Regras de Negócio](docs/regras-de-negocio.md)
-- [Modelo de Dados (Firebase)](docs/modelo-de-dados.md)
-- [Escopo e Restrições](docs/escopo-e-restricoes.md)
-- [Decisões Técnicas](docs/decisoes-tecnicas.md)
+Integration with a cloud-based database (Firebase)
 
+Technologies Used
 
----
+MIT App Inventor
 
-## Autor
-Leonardo Henrique Oliveira 
-BICT – UNIFAL-MG
+Firebase Authentication
+
+Firebase Realtime Database
+
+Block-based programming logic
+
+System Architecture and Flow
+
+The application was structured with a clear separation between the user interface, business logic, and data layer.
+Communication with Firebase enables the storage and retrieval of user information, carpools, and seat availability.
+
+(System flow diagrams and images)
+
+Project Status
+
+Functional prototype developed in an academic context.
+The application was not released to production nor made available to end users.
+
+Key Learnings
+
+System modeling focused on real-world problems
+
+Implementation of authentication and user control
+
+Structuring of business rules
+
+Integration with cloud-based databases
+
+Organization of a development project from start to finish
+
+Core Logic in Python (Portfolio)
+
+In addition to the App Inventor prototype, this repository includes a Python implementation
+of the system’s core logic (seat management, entry/exit, and cancellation).
+See: core_python/
+
+Documentation
+
+Overview
+
+Features
+
+Architecture
+
+User Flow
+
+Business Rules
+
+Data Model (Firebase)
+
+Scope and Constraints
+
+Technical Decisions
+
+Author
+
+Leonardo Henrique Oliveira
+BICT – Federal University of Alfenas (UNIFAL-MG)
+Ajustar para portfólio de Data Science / Software Engineering
+
+Criar uma versão curta para o README principal e outra mais longa para /docs
