@@ -1,0 +1,132 @@
+# Application Features
+
+The UniCar application implements a complete academic prototype for university carpooling management. Its features were designed to cover the full lifecycle of a shared ride, from offer creation to passenger–driver communication.
+
+All features are implemented using event-driven logic and cloud-based data synchronization.
+
+---
+
+## User Management
+
+### User Registration
+- Allows users to create an account within the application.
+- User data is stored in Firebase under a structured user identifier.
+- The same registration applies to both drivers and passengers.
+
+### User Authentication
+- Login mechanism validates registered users.
+- Authentication controls access to protected application screens.
+- User identification is reused throughout the system to associate offers and selections.
+
+---
+
+## Carpool Offer Management
+
+### Create Carpool Offer
+- Drivers can register new carpool offers by providing:
+  - Number of available seats
+  - Departure time
+  - Route and destination information
+- Offer data is validated and organized using structured dictionaries.
+- Each offer receives a unique identifier.
+
+### Store Offers in Cloud Database
+- Offers are stored in Firebase Realtime Database.
+- The system maintains a global counter for registered offers.
+- The offer creation date is automatically recorded.
+
+### Reset Offer Form
+- After successful registration, input fields are cleared.
+- The system is prepared for new offer creation without manual reset.
+
+---
+
+## Carpool Visualization and Selection
+
+### Load Available Offers
+- Available carpools are dynamically loaded from Firebase.
+- Offers are displayed using list visualization components.
+- Only valid and active offers are shown to passengers.
+
+### Offer Selection
+- Passengers can select a carpool from a list.
+- A confirmation dialog is displayed before proceeding.
+- The system validates seat availability before confirmation.
+
+### Seat Availability Control
+- When a passenger confirms a selection:
+  - Available seats are reduced by one.
+  - Updated data is saved back to Firebase.
+- Prevents overbooking and ensures data consistency.
+
+---
+
+## Local State Management
+
+### Temporary Data Storage
+- TinyDB is used to store:
+  - Selected offer identifiers
+  - Offer details required across screens
+- Ensures continuity during navigation between screens.
+
+### Offline Tolerance
+- Local storage reduces dependency on repeated cloud queries.
+- Improves application responsiveness.
+
+---
+
+## Boarding Point Selection
+
+### Boarding Point Interface
+- Passengers select a boarding point from predefined options.
+- Options are loaded dynamically based on the selected offer.
+
+### Boarding Point Validation
+- Ensures compatibility between the selected route and boarding point.
+- Updates internal messaging data accordingly.
+
+---
+
+## Driver Communication
+
+### Personalized WhatsApp Messaging
+- Automatically generates a personalized message to the driver.
+- Message includes:
+  - Passenger intent
+  - Selected boarding point
+  - Contextual greeting
+- Opens WhatsApp directly with pre-filled content.
+
+### External Application Integration
+- Uses Android intents to launch WhatsApp.
+- Ensures seamless transition from UniCar to external communication.
+
+---
+
+## User Feedback and Notifications
+
+### System Alerts
+- Provides real-time feedback for:
+  - Successful offer creation
+  - Confirmation of carpool selection
+  - Error handling and cancellation
+- Improves user experience and clarity of actions.
+
+---
+
+## Academic and Technical Scope
+
+- Fully functional academic prototype.
+- Focus on business logic and data flow.
+- Not intended for production deployment.
+- Designed for conceptual validation and learning.
+
+---
+
+## Extensibility
+
+The current feature set allows future expansion, including:
+- Ratings and feedback systems
+- Route optimization
+- Push notifications
+- Migration to native or cross-platform frameworks
