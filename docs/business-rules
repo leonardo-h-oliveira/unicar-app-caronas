@@ -1,0 +1,148 @@
+# Business Rules
+
+This document defines the core business rules implemented in the UniCar prototype. These rules ensure data consistency, prevent invalid operations, and support the full lifecycle of a carpool offer and passenger selection.
+
+The rules below reflect the application logic implemented across screens and procedures.
+
+---
+
+## 1. User Identity and Session Rules
+
+### BR-01 — Authentication Required
+Users must be authenticated before accessing the main workflow.
+- If authentication fails, the user remains on the authentication screen.
+- A valid user identifier is required to create or select carpools.
+
+### BR-02 — Local Session Persistence
+After successful authentication, the user identifier must be stored locally (TinyDB) for use across screens.
+- This reduces repeated authentication steps and supports navigation continuity.
+
+---
+
+## 2. Carpool Offer Rules
+
+### BR-03 — Offer Creation Requires Valid Data
+A carpool offer can only be created if all required fields are valid, including:
+- Available seats > 0
+- Valid time input
+- Valid route/destination data
+
+Invalid data prevents offer storage.
+
+### BR-04 — Offer Storage Must Be Structured
+When storing an offer, the system must build a structured record (dictionary) containing:
+- Offer identifier
+- Seat availability (`num_vagas` / available seats)
+- Offer details (`dados_oferta`)
+- Associated driver context
+
+### BR-05 — Global Offer Counter
+The database must maintain a global offer counter (e.g., `Nofertas`) used to register and index offers.
+- Each new offer increments the counter.
+- Offers are stored under `OFERTAS/<index>` or equivalent keys.
+
+### BR-06 — Daily Offer Lifecycle (Optional System Reset)
+The system may track a daily offer state using a stored value (e.g., `dia_ultima_oferta`).
+- When the current day differs from the stored day:
+  - Offers may be cleared/reset.
+  - The counter may be re-initialized as defined by the implementation.
+This behavior prevents accumulation of stale offers and maintains daily relevance.
+
+---
+
+## 3. Offer Visualization Rules
+
+### BR-07 — Show Only Valid Offers
+Only offers that are active and have available seats should be displayed to passengers.
+- Offers with zero available seats must not be selectable.
+- If no valid offers exist, the system must notify the user.
+
+---
+
+## 4. Passenger Selection Rules
+
+### BR-08 — Selection Requires Confirmation
+When a passenger selects an offer, the system must present a confirmation step.
+- The operation only proceeds after explicit user confirmation.
+
+### BR-09 — Seat Availability Must Be Checked
+Before finalizing a selection, the system must re-check seat availability.
+- Prevents concurrency issues and overbooking.
+
+### BR-10 — Seat Decrement on Acceptance
+When a passenger confirms a carpool selection:
+- The system must update the offer by reducing available seats by one:
+
+`available_seats = available_seats - 1`
+
+This update must be written back to Firebase immediately.
+
+### BR-11 — Offer Becomes Unavailable at Zero Seats
+If seat availability reaches zero:
+- The offer must no longer be selectable.
+- The system should hide or remove it from the available offer list, or flag it as unavailable.
+
+### BR-12 — Selection Context Must Be Stored Locally
+After a confirmed selection, the system must store essential context in TinyDB, such as:
+- Selected offer identifier/index
+- Offer details needed across screens
+
+This ensures consistent flow into boarding point selection and messaging.
+
+---
+
+## 5. Boarding Point Rules
+
+### BR-13 — Boarding Point Must Be Selected
+The passenger must choose a boarding point before initiating driver communication.
+- The system may offer predefined options based on the selected offer.
+
+### BR-14 — Boarding Point Must Be Consistent With Offer
+The selected boarding point must be compatible with the selected carpool offer.
+- Invalid combinations must be blocked or corrected by the UI workflow.
+
+---
+
+## 6. Driver Communication Rules (WhatsApp)
+
+### BR-15 — Messaging Is Triggered Only After Confirmation
+WhatsApp communication is only allowed after:
+- Offer selection confirmation
+- Boarding point selection
+
+### BR-16 — Message Must Be Contextual
+The generated WhatsApp message must include:
+- A clear passenger intent
+- The selected boarding point
+- Basic ride context (destination/route summary where applicable)
+
+The message is opened pre-filled, and sending remains user-controlled.
+
+---
+
+## 7. Error Handling and Safe Exit Rules
+
+### BR-17 — Safe Cancellation
+Users can cancel actions without corrupting database state.
+- No partial write should remain after cancellation.
+- Local context may be cleared when appropriate.
+
+### BR-18 — User Feedback Is Mandatory
+For major actions (offer creation, selection, confirmation, errors), the system must display feedback:
+- Success messages
+- Error alerts
+- Unavailable offer notices
+
+This improves clarity and reduces misuse.
+
+---
+
+## Rule Summary
+
+The UniCar prototype enforces:
+- Authentication-based access control
+- Structured offer creation and storage
+- Real-time seat availability management
+- Confirmation-based passenger selection
+- Consistent state persistence (Firebase + TinyDB)
+- WhatsApp communication with contextual data
