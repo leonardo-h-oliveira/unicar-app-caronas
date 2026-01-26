@@ -1,0 +1,49 @@
+# Data Model (Firebase + TinyDB)
+
+This document describes the data model used in the UniCar prototype. The application uses a hybrid persistence approach:
+- **Firebase Realtime Database** for centralized and shared state
+- **TinyDB** for local temporary persistence between screens
+
+The model below reflects the naming conventions and data keys used by the implementation.
+
+---
+
+## 1. Firebase Realtime Database (Cloud Storage)
+
+### 1.1 Root Keys
+
+The following keys are used at the database root level:
+
+- `USUARIOS` — User profiles indexed by user identifier
+- `OFERTAS` — Carpool offers indexed by an offer counter/index
+- `Nofertas` — Global counter of offers created
+- `dia_ultima_oferta` — Daily control variable for resetting stale offers
+
+---
+
+## 2. Users (`USUARIOS`)
+
+### 2.1 Structure
+
+Users are stored under:
+
+`USUARIOS/<user_id>`
+
+Where `<user_id>` is the identifier obtained from authentication and reused across the system.
+
+### 2.2 Example Record
+
+```json
+{
+  "USUARIOS": {
+    "user_id_123": {
+      "nome": "Leonardo Henrique Oliveira",
+      "email": "leo@example.com",
+      "telefone": "(35) 99999-0000",
+      "carro": "Onix",
+      "cor": "Preto",
+      "placa": "ABC-1234",
+      "paradas": "Praça Central|Rodoviária"
+    }
+  }
+}
