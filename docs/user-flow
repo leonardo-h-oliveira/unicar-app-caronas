@@ -1,0 +1,98 @@
+# User Flow
+
+This document describes the complete user interaction flow within the UniCar application, covering both driver and passenger perspectives. The flows are designed to reflect the actual implementation logic and screen navigation of the system.
+
+---
+
+## Entry Flow (All Users)
+
+1. The user opens the application.
+2. The system displays **Screen1 (Authentication)**.
+3. The user logs in or registers.
+4. Upon successful authentication:
+   - The user identifier is stored locally using TinyDB.
+   - The system navigates to **Screen4 (Main Menu)**.
+
+From this point forward, the user may act either as a driver or as a passenger.
+
+---
+
+## Driver Flow (Offering a Carpool)
+
+1. From **Screen4 (Main Menu)**, the user selects **"Offer Carpool"**.
+2. The system navigates to **Screen3 (Carpool Offer Creation)**.
+3. The driver enters:
+   - Number of available seats
+   - Departure time
+   - Route and destination information
+4. The system validates the input data.
+5. Upon confirmation:
+   - A structured carpool offer is created.
+   - The offer is saved to Firebase Realtime Database.
+   - The global offer counter is updated.
+6. A confirmation message is displayed to the user.
+7. The system clears the input fields and remains ready for a new offer.
+
+---
+
+## Passenger Flow (Requesting a Carpool)
+
+1. From **Screen4 (Main Menu)**, the user selects **"Request Carpool"**.
+2. The system navigates to **Screen4 (Available Carpools View)**.
+3. The system loads available carpool offers from Firebase.
+4. Offers with available seats are displayed in a list.
+5. The passenger selects a desired offer.
+6. A confirmation dialog is presented.
+7. Upon confirmation:
+   - Seat availability is validated.
+   - Available seats are reduced by one.
+   - Updated offer data is saved back to Firebase.
+   - Offer information is stored locally in TinyDB.
+8. The system navigates to **Screen5 (Boarding Point Selection)**.
+
+---
+
+## Boarding Point Selection Flow
+
+1. On **Screen5**, the passenger selects a boarding point from predefined options.
+2. The system validates the selected boarding point.
+3. The selected boarding point is appended to the communication context.
+4. The system prepares the message to be sent to the driver.
+
+---
+
+## Communication Flow (WhatsApp Integration)
+
+1. After boarding point confirmation, the system triggers the communication procedure.
+2. A personalized WhatsApp message is generated, containing:
+   - Driver greeting
+   - Passenger intent
+   - Selected boarding point
+3. The system launches WhatsApp using Android intents.
+4. The message is pre-filled and ready to be sent by the user.
+
+---
+
+## State Management Flow
+
+- User identifiers and selected offers are cached locally using TinyDB.
+- Firebase Realtime Database maintains global state consistency.
+- Local storage minimizes repeated database access and improves responsiveness.
+
+---
+
+## Error and Cancellation Handling
+
+- If no offers are available, the system notifies the user.
+- If seat availability reaches zero, the offer is no longer selectable.
+- Users may cancel operations at any stage without corrupting system state.
+
+---
+
+## Flow Summary
+
+The UniCar user flow ensures:
+- Clear separation between driver and passenger roles
+- Controlled seat availability
+- Reliable data synchronization
+- Seamless transition between internal screens and external communication
