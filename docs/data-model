@@ -47,3 +47,142 @@ Where `<user_id>` is the identifier obtained from authentication and reused acro
     }
   }
 }
+
+---
+
+## 3. Offers (`OFERTAS`)
+
+### 3.1 Structure
+
+Carpool offers are stored under:
+
+`OFERTAS/<offer_index>`
+
+Where `<offer_index>` is derived from the global counter `Nofertas`.
+
+Each offer represents a single carpool created by a driver.
+
+### 3.2 Offer Fields
+
+Each offer contains the following fields:
+
+- `id` — identifier of the user who created the offer (driver)
+- `num_vagas` — number of available seats
+- `dados_oferta` — dictionary containing offer details used by the UI and messaging logic
+
+### 3.3 Example Record
+
+```json
+{
+  "OFERTAS": {
+    "1": {
+      "id": "user_id_driver",
+      "num_vagas": 2,
+      "dados_oferta": {
+        "origem": "UNIFAL - Campus Poços",
+        "destino": "Centro",
+        "data_hora": "2026-02-01 18:30",
+        "observacoes": "Saída do estacionamento",
+        "pontos_embarque": "Praça Central|Rodoviária"
+      }
+    }
+  }
+}
+
+### 3.4 Notes
+- The `dados_oferta` field aggregates all information required for offer visualization,
+  passenger selection, boarding point definition, and message generation.
+- Boarding points are stored using a delimiter-based strategy to simplify manipulation
+  within the block-based programming environment.
+
+## 5. Daily Offer Reset Key (`dia_ultima_oferta`)
+
+### 5.1 Purpose
+
+The key `dia_ultima_oferta` stores the last day on which carpool offers were created.
+It is used as a control mechanism to determine whether the current list of offers
+should be reset when a new day is detected.
+
+This strategy was adopted to avoid the accumulation of outdated offers in the academic
+prototype and to keep the list of available carpools relevant to the current day.
+
+### 5.2 Example
+
+```json
+{
+  "dia_ultima_oferta": 26
+}
+
+###5.3 Notes
+
+The stored value represents the day of the month obtained from the system date.
+
+When the current day differs from the stored value, the system may:
+
+Clear existing offers
+
+Reset the global offer counter (Nofertas)
+
+This approach is suitable for an academic prototype and simplifies daily data
+management without requiring timestamp-based filtering.
+
+In future versions, this mechanism can be replaced by full date-time tracking
+for increased robustness.
+
+## 6. TinyDB (Local Storage)
+
+### 6.1 Purpose
+
+TinyDB is used for local and temporary data persistence, allowing the application
+to maintain state across different screens without requiring repeated access to
+the Firebase Realtime Database.
+
+This approach improves navigation continuity, responsiveness, and reduces redundant
+cloud queries during user interaction.
+
+### 6.2 Common Keys
+
+The following keys are commonly stored in TinyDB to preserve workflow context
+between screens:
+
+- `id` — authenticated user identifier
+- `oferta_selecionada` — index or label of the selected carpool offer
+- `id_ofertador` — identifier of the driver associated with the selected offer
+- `dados_oferta` — dictionary containing the selected offer details
+- `ponto_embarque` — boarding point selected by the passenger
+
+### 6.3 Notes
+- TinyDB data is session-oriented and may be overwritten as the user navigates
+  through the application.
+- Local storage is not intended for long-term persistence, but for maintaining
+  temporary state and navigation continuity.
+- Key names stored in TinyDB must strictly match those used in the block-based
+  implementation to avoid inconsistencies.
+- The use of TinyDB complements Firebase by reducing the need for repeated
+  database reads across screens.
+
+## 7. Consistency Rules
+
+To ensure data integrity and correct system behavior, the following consistency
+rules are enforced throughout the application:
+
+- Only carpool offers with `num_vagas > 0` are displayed and selectable by passengers.
+- Before confirming a selection, seat availability is validated again to prevent
+  invalid or concurrent operations.
+- When a passenger confirms a carpool selection, seat availability is updated as:
+
+  `num_vagas = num_vagas - 1`
+
+- The updated offer record is immediately written back to the Firebase Realtime Database.
+- When `num_vagas` reaches zero, the offer becomes unavailable and must no longer
+  be displayed in the list of available carpools.
+- After selection, TinyDB values are updated to preserve context for boarding point
+  selection and WhatsApp communication.
+- Cancellation actions must not result in partial or inconsistent database writes.
+
+### 7.1 Notes
+- Consistency checks are performed at multiple points in the workflow to minimize
+  the risk of overbooking.
+- The combination of cloud validation (Firebase) and local state control (TinyDB)
+  ensures reliable synchronization across screens.
+- These rules guarantee predictable system behavior even under repeated user actions.
