@@ -1,0 +1,95 @@
+# Academic Context
+
+This document describes the academic context in which the UniCar project was conceived, developed, and evaluated.
+
+---
+
+## Project Origin
+
+UniCar was developed as a **Final Undergraduate Project (Trabalho de Conclusão de Curso – TCC)** for the Interdisciplinary Bachelor’s Degree in Science and Technology (BICT) at the **Federal University of Alfenas (UNIFAL-MG)**, Brazil.
+
+The project was carried out within an academic environment, with the primary objective of applying theoretical and practical concepts related to:
+- Programming logic
+- Systems development
+- Data modeling
+- Mobile application architecture
+
+---
+
+## Academic Objectives
+
+The main academic goals of the project included:
+
+- Designing a functional system to address a real-world problem faced by the university community.
+- Applying software engineering principles in a constrained development environment.
+- Demonstrating the ability to model data, business rules, and user flows.
+- Integrating cloud-based services into a mobile application prototype.
+
+---
+
+## Development Environment
+
+The application was developed using **MIT App Inventor**, a block-based programming platform suitable for rapid prototyping and educational purposes.
+
+Firebase Realtime Database was adopted as the backend service to support:
+- User data storage
+- Carpool offer management
+- Seat availability control
+
+Local persistence was implemented using TinyDB to support navigation continuity and session state management.
+
+---
+
+## Scope and Limitations
+
+As an academic prototype, UniCar was developed with the following constraints:
+
+- The application was not intended for production deployment.
+- No formal scalability or performance testing was conducted.
+- Security rules were implemented at a basic level, suitable for prototype validation.
+- The system prioritizes clarity of logic and architecture over optimization.
+
+These limitations were considered acceptable within the academic scope of the project.
+
+---
+
+## Evaluation Criteria
+
+The project was evaluated based on:
+
+- Functional correctness of the implemented features
+- Consistency of the data model and business rules
+- Clarity of system architecture and user flow
+- Documentation quality and technical justification of decisions
+
+---
+
+## Academic Contribution
+
+The UniCar project demonstrates:
+
+- Practical application of theoretical concepts learned throughout the BICT program.
+- Ability to structure and document a complete software system.
+- Integration of multiple technologies into a cohesive solution.
+- Awareness of design trade-offs and system constraints.
+
+---
+
+## Transition to Portfolio Project
+
+After academic evaluation, the UniCar repository was reorganized and expanded to serve as a **technical portfolio project**.
+
+This transition included:
+- Documentation refactoring to English
+- Modular architectural descriptions
+- Clear separation between academic context and professional presentation
+
+This allows the project to be evaluated both as an academic work and as a demonstration of software engineering skills.
+
+---
+
+## Summary
+
+UniCar originated as an academic project and evolved into a documented system prototype.
+Its academic foundation provided a structured environment for learning and experimentation,
+while its final organization supports professional portfolio presentation.
