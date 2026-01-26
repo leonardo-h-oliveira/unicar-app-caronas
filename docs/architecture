@@ -1,0 +1,90 @@
+# System Architecture
+
+The UniCar application follows a modular and event-driven architecture, implemented using MIT App Inventor’s block-based programming paradigm. The system is structured around a clear separation between user interface components, business logic, and data persistence layers.
+
+Although developed as an academic prototype, the architecture was designed to simulate real-world mobile application behavior, including authentication, state management, cloud data synchronization, and external service integration.
+
+---
+
+## Architectural Layers
+
+### 1. Presentation Layer (User Interface)
+
+The presentation layer is composed of multiple application screens, each responsible for a specific interaction within the carpooling workflow:
+
+- **Screen1**: User authentication and system entry point.
+- **Screen3**: Carpool offer creation and management.
+- **Screen4**: Visualization and selection of available carpool offers.
+- **Screen5**: Selection of boarding points and communication with the driver.
+
+Each screen uses visual components such as text fields, buttons, list visualizers, and dialogs to capture user actions and trigger system events.
+
+---
+
+### 2. Business Logic Layer
+
+The business logic is implemented through custom procedures and event handlers that coordinate system behavior. Core procedures include:
+
+- `cadastrar_oferta`: Prepares and validates carpool data entered by the driver.
+- `gravar_ofertas`: Stores carpool offers in Firebase using structured dictionaries.
+- `carregar_ofertas`: Loads available carpools into list visualization components.
+- `atualiza_DB_apos_selecao`: Updates seat availability and offer data after passenger confirmation.
+- `whatsapp2`: Builds and sends a personalized WhatsApp message to the driver.
+
+Conditional logic is used extensively to validate user actions, confirm selections, and handle exceptional cases such as unavailable seats or canceled requests.
+
+---
+
+### 3. Data Persistence Layer
+
+UniCar uses a hybrid data persistence strategy:
+
+#### Firebase Realtime Database
+Firebase is responsible for centralized, cloud-based data storage, including:
+- User profiles
+- Carpool offers
+- Seat availability
+- Boarding points
+
+Data is stored using hierarchical keys such as `USUARIOS`, `OFERTAS`, and `Nofertas`, ensuring consistency and scalability.
+
+#### TinyDB (Local Storage)
+TinyDB is used for temporary local persistence, allowing:
+- Storage of selected offer identifiers
+- Offline state management between screens
+- Fast data retrieval during navigation flows
+
+This combination ensures efficient data access while minimizing redundant cloud queries.
+
+---
+
+### 4. Integration Layer
+
+The system integrates external services to enhance usability:
+
+- **WhatsApp Integration**: Implemented via Android intents and the WhatsApp API URL scheme, enabling direct communication between passengers and drivers with pre-filled messages.
+- **System Intents**: Used to open external applications and manage activity transitions.
+
+---
+
+## Data Flow Overview
+
+1. Drivers create carpool offers on Screen3.
+2. Offer data is validated, structured, and stored in Firebase.
+3. Passengers load and visualize available offers on Screen4.
+4. Upon selection, a confirmation dialog is presented.
+5. Confirmed selections update Firebase and local TinyDB data.
+6. Passengers select a boarding point on Screen5.
+7. A personalized message is sent to the driver via WhatsApp.
+
+---
+
+## Architectural Characteristics
+
+- Event-driven logic
+- Modular procedures
+- Cloud-based synchronization
+- Clear separation of concerns
+- Scalable data modeling
+
+This architecture ensures that the UniCar prototype remains robust, extensible, and suitable for future migration to traditional mobile development frameworks.
