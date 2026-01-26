@@ -1,0 +1,135 @@
+# core_python/models.py
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import List, Dict, Optional
+from datetime import datetime
+
+
+# ----------------------------
+# Helpers
+# ----------------------------
+def _now_iso() -> str:
+    return datetime.utcnow().isoformat()
+
+
+def _split_paradas(value: Optional[str]) -> List[str]:
+    """
+    Firebase/App Inventor stores stops as a single string separated by '|'
+    Example: "Praça Central|Rodoviária"
+    """
+    if not value:
+        return []
+    return [p.strip() for p in value.split("|") if p.strip()]
+
+
+def _join_paradas(paradas: List[str]) -> str:
+    return "|".join([p.strip() for p in paradas if p.strip()])
+
+
+# ----------------------------
+# Domain Models
+# ----------------------------
+@dataclass
+class User:
+    """
+    Mirrors Firebase: USUARIOS/<user_id>
+    """
+    user_id: str
+    nome: str
+    email: str
+    telefone: str
+    carro: str = ""
+    cor: str = ""
+    placa: str = ""
+    paradas: List[str] = field(default_factory=list)
+
+    @staticmethod
+    def from_firebase(user_id: str, data: Dict) -> "User":
+        return User(
+            user_id=user_id,
+            nome=str(data.get("nome", "")),
+            email=str(data.get("email", "")),
+            telefone=str(data.get("telefone", "")),
+            carro=str(data.get("carro", "")),
+            cor=str(data.get("cor", "")),
+            placa=str(data.get("placa", "")),
+            paradas=_split_paradas(data.get("paradas")),
+        )
+
+    def to_firebase(self) -> Dict:
+        return {
+            "nome": self.nome,
+            "email": self.email,
+            "telefone": self.telefone,
+            "carro": self.carro,
+            "cor": self.cor,
+            "placa": self.placa,
+            # App Inventor pattern: stops as "A|B|C"
+            "paradas": _join_paradas(self.paradas),
+        }
+
+
+@dataclass
+class Offer:
+    """
+    Mirrors Firebase: OFERTAS/<offer_key>
+    offer_key is usually the numeric counter (global_num_ofertas in blocks).
+    """
+    offer_key: str  # e.g. "1", "2", "3"
+    id_ofertador: str  # user_id (driver)
+    num_vagas: int
+    dados_oferta: List[str]  # list created in App Inventor (horario, local, carro, etc.)
+    created_at: str = field(default_factory=_now_iso)
+    updated_at: str = field(default_factory=_now_iso)
+
+    @staticmethod
+    def from_firebase(offer_key: str, data: Dict) -> "Offer":
+        # In your blocks you store:
+        # { "id": <global id>, "num_vagas": <text>, "dados_oferta": <global oferta list> }
+        id_ofertador = str(data.get("id", ""))
+        raw_vagas = data.get("num_vagas", 0)
+
+        try:
+            num_vagas = int(raw_vagas)
+        except (TypeError, ValueError):
+            num_vagas = 0
+
+        dados = data.get("dados_oferta", [])
+        if not isinstance(dados, list):
+            # Defensive: sometimes it can come as string
+            dados = [str(dados)]
+
+        created_at = str(data.get("created_at", _now_iso()))
+        updated_at = str(data.get("updated_at", created_at))
+
+        return Offer(
+            offer_key=str(offer_key),
+            id_ofertador=id_ofertador,
+            num_vagas=num_vagas,
+            dados_oferta=[str(x) for x in dados],
+            created_at=created_at,
+            updated_at=updated_at,
+        )
+
+    def to_firebase(self) -> Dict:
+        return {
+            "id": self.id_ofertador,
+            "num_vagas": self.num_vagas,
+            "dados_oferta": self.dados_oferta,
+            "created_at": self.created_at,
+            "updated_at": _now_iso(),
+        }
+
+    def has_seats(self) -> bool:
+        return self.num_vagas > 0
+
+    def reserve_seat(self) -> None:
+        if self.num_vagas <= 0:
+            raise ValueError("No seats available to reserve.")
+        self.num_vagas -= 1
+        self.updated_at = _now_iso()
+
+    def cancel_reservation(self) -> None:
+        self.num_vagas += 1
+        self.updated_at = _now_iso()
