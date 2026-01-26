@@ -1,1 +1,12 @@
+# Project Overview
+
+UniCar is a functional prototype of a university carpooling application developed as a Final Undergraduate Project (TCC) in the Interdisciplinary Bachelor’s Degree in Science and Technology (BICT) at the Federal University of Alfenas (UNIFAL-MG), Brazil.
+
+The project was designed to apply concepts of programming logic, system development, and data modeling to a real-world problem faced by the academic community: student mobility.
+
+UniCar focuses on the organization and management of shared carpool offers, allowing students to offer rides, search for available carpools, manage seats, and communicate efficiently with drivers.
+
+The application was implemented using block-based programming through MIT App Inventor and integrates cloud services via Firebase for authentication and real-time data storage.
+
+Although fully functional, UniCar was developed as an academic prototype and was not released for production use.
 
