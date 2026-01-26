@@ -1,14 +1,68 @@
-# UniCar – Technical Documentation
+# UniCar – University Carpooling Application
 
-This directory contains the technical documentation of the UniCar project.
+Functional prototype of a university carpooling application developed as a Final Undergraduate Project (TCC)  
+in the Interdisciplinary Bachelor’s Degree in Science and Technology (BICT) at UNIFAL-MG, Brazil.
 
-## Contents
-- Overview
-- System Architecture
-- User Flow
-- Features
-- Business Rules
-- Data Model
-- Technical Decisions
-- Scope and Limitations
-- Academic Context
+---
+
+## 📌 Overview
+
+UniCar is a mobile application prototype designed to address mobility challenges within a university environment.
+The system allows students to offer and request carpools in a structured, organized, and controlled manner.
+
+The project focuses on **system architecture**, **business logic**, **data modeling**, and **user flow management**,
+rather than production deployment.
+
+---
+
+## 🎯 Project Objectives
+
+- Design a functional carpooling system for academic environments
+- Apply software engineering principles in a mobile context
+- Model business rules and data consistency constraints
+- Integrate cloud-based persistence with local state management
+- Document architectural and technical decisions clearly
+
+---
+
+## 🧠 Core Features
+
+- User registration and authentication
+- Carpool offer creation and management
+- Dynamic visualization of available carpools
+- Seat availability control
+- Boarding point selection
+- Passenger–driver communication via WhatsApp
+- Hybrid data persistence (Firebase + TinyDB)
+
+---
+
+## 🏗️ System Architecture
+
+The application follows a modular and event-driven architecture, composed of:
+
+- **Presentation Layer**: Screen-based UI implemented in MIT App Inventor
+- **Business Logic Layer**: Validation rules, offer lifecycle control, and state management
+- **Data Layer**: Firebase Realtime Database and local persistence via TinyDB
+
+A complete architectural description is available in `/docs/architecture.md`.
+
+---
+
+## 📂 Repository Structure
+
+```text
+unicar-app-carpooling/
+├── README.md
+├── docs/
+│   ├── overview.md
+│   ├── architecture.md
+│   ├── features.md
+│   ├── user-flow.md
+│   ├── business-rules.md
+│   ├── data-model.md
+│   ├── technical-decisions.md
+│   └── academic-context.md
+├── app-inventor/
+├── imagens/
+└── core_python/
