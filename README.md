@@ -1,52 +1,50 @@
-# UniCar – University Carpooling Application
+# UniCar
 
-Functional prototype of a university carpooling application developed as a Final Undergraduate Project (TCC)  
-in the Interdisciplinary Bachelor’s Degree in Science and Technology (BICT) at UNIFAL-MG.
+Protótipo de aplicativo de caronas universitárias desenvolvido como Trabalho de Conclusão de Curso do Bacharelado Interdisciplinar em Ciência e Tecnologia da UNIFAL-MG.
 
----
+O projeto investigou como organizar a oferta e a solicitação de caronas dentro da comunidade universitária, com regras para cadastro, autenticação, pontos de encontro, vagas disponíveis e comunicação entre motorista e passageiro.
 
-## 📌 Overview
-UniCar is an academic prototype designed to address mobility challenges within a university environment.
-The application allows students to offer and request carpools in a structured, secure, and organized way.
+## Escopo do trabalho
 
-The project focuses on **business logic**, **data flow**, and **system modeling**, rather than production deployment.
+O protótipo original foi desenvolvido para Android com MIT App Inventor, Firebase Authentication, Firebase Realtime Database e armazenamento local com TinyDB.
 
----
+Este repositório preserva a documentação do projeto e uma representação em Python das principais entidades e regras de negócio. O objetivo é registrar a modelagem realizada no TCC, não distribuir um aplicativo para uso em produção.
 
-## 🎯 Main Features
-- User registration and authentication
-- Offer and request carpools
-- Seat availability control
-- Selection of pickup points
-- Data persistence using Firebase
-- Passenger–driver communication via WhatsApp
+## Conteúdo do repositório
 
----
-
-## 🏗️ Technologies
-- MIT App Inventor (block-based programming)
-- Firebase Authentication
-- Firebase Realtime Database
-- TinyDB (local persistence)
-- Android platform
-
----
-
-## 🧠 System Architecture
-The application follows a modular structure with:
-- UI layer (screens and components)
-- Business logic (validation, control flow, seat management)
-- Data layer (Firebase and local storage)
-
-Detailed diagrams, flows, and logic explanations are available in `/docs`.
-
----
-
-## 📂 Repository Structure
 ```text
-unicar-app-carpooling/
-├── README.md
+unicar-app-caronas/
+├── core_python/
+│   ├── demo.py
+│   ├── models.py
+│   ├── repository.py
+│   └── services.py
 ├── docs/
-├── app-inventor/
-├── imagens/
-└── core_python/
+└── README.md
+```
+
+- `docs/`: requisitos, fluxos, regras e decisões técnicas
+- `core_python/`: demonstração das entidades, do repositório em memória e dos serviços do domínio
+
+Para executar a demonstração em Python:
+
+```bash
+python -m core_python.demo
+```
+
+## Principais regras modeladas
+
+- Cadastro e autenticação de usuários
+- Oferta e solicitação de caronas
+- Seleção de pontos de encontro
+- Controle da quantidade de vagas
+- Persistência de informações locais e remotas
+- Comunicação entre motorista e passageiro após a confirmação
+
+## Continuidade
+
+Os requisitos e aprendizados do UniCar deram origem ao [Smart Carpool](https://github.com/leonardo-h-oliveira/smart-carpool), uma implementação web com banco relacional, API, testes automatizados e demonstração publicada.
+
+## Autoria
+
+Trabalho desenvolvido por Leonardo Henrique Oliveira e Bruna Helena Antonialli Gomes, sob orientação do Prof. Dr. Luiz Felipe Ramos Turci.
