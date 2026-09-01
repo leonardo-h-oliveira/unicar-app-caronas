@@ -1,16 +1,16 @@
 # UniCar
 
-Protótipo de aplicativo de caronas universitárias desenvolvido como Trabalho de Conclusão de Curso do Bacharelado Interdisciplinar em Ciência e Tecnologia da UNIFAL-MG.
+A university carpooling application prototype developed as the final project for the Interdisciplinary Bachelor's Degree in Science and Technology at UNIFAL-MG.
 
-O projeto investigou como organizar a oferta e a solicitação de caronas dentro da comunidade universitária, com regras para cadastro, autenticação, pontos de encontro, vagas disponíveis e comunicação entre motorista e passageiro.
+The project explored how to organize ride offers and requests within a university community, including account registration, authentication, boarding points, seat availability and communication between drivers and passengers.
 
-## Escopo do trabalho
+## Project scope
 
-O protótipo original foi desenvolvido para Android com MIT App Inventor, Firebase Authentication, Firebase Realtime Database e armazenamento local com TinyDB.
+The original Android prototype was built with MIT App Inventor, Firebase Authentication, Firebase Realtime Database and TinyDB local storage.
 
-Este repositório preserva a documentação do projeto e uma representação em Python das principais entidades e regras de negócio. O objetivo é registrar a modelagem realizada no TCC, não distribuir um aplicativo para uso em produção.
+This repository preserves the project documentation and a Python representation of its main entities and business rules. Its purpose is to document the work completed for the undergraduate project, not to distribute a production application.
 
-## Conteúdo do repositório
+## Repository contents
 
 ```text
 unicar-app-caronas/
@@ -23,28 +23,28 @@ unicar-app-caronas/
 └── README.md
 ```
 
-- `docs/`: requisitos, fluxos, regras e decisões técnicas
-- `core_python/`: demonstração das entidades, do repositório em memória e dos serviços do domínio
+- `docs/`: requirements, workflows, business rules and technical decisions
+- `core_python/`: a runnable representation of the domain entities, in-memory repository and services
 
-Para executar a demonstração em Python:
+Run the Python demonstration with:
 
 ```bash
 python -m core_python.demo
 ```
 
-## Principais regras modeladas
+## Main business rules
 
-- Cadastro e autenticação de usuários
-- Oferta e solicitação de caronas
-- Seleção de pontos de encontro
-- Controle da quantidade de vagas
-- Persistência de informações locais e remotas
-- Comunicação entre motorista e passageiro após a confirmação
+- User registration and authentication
+- Publishing and requesting rides
+- Boarding point selection
+- Seat availability control
+- Local and remote data persistence
+- Driver and passenger communication after confirmation
 
-## Continuidade
+## Continuation
 
-Os requisitos e aprendizados do UniCar deram origem ao [Smart Carpool](https://github.com/leonardo-h-oliveira/smart-carpool), uma implementação web com banco relacional, API, testes automatizados e demonstração publicada.
+The requirements and lessons from UniCar led to [Smart Carpool](https://github.com/leonardo-h-oliveira/smart-carpool), a web implementation with a relational database, API, automated tests and a published demonstration.
 
-## Autoria
+## Authors
 
-Trabalho desenvolvido por Leonardo Henrique Oliveira e Bruna Helena Antonialli Gomes, sob orientação do Prof. Dr. Luiz Felipe Ramos Turci.
+Developed by Leonardo Henrique Oliveira and Bruna Helena Antonialli Gomes under the supervision of Professor Luiz Felipe Ramos Turci.

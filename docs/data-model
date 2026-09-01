@@ -37,13 +37,13 @@ Where `<user_id>` is the identifier obtained from authentication and reused acro
 {
   "USUARIOS": {
     "user_id_123": {
-      "nome": "Leonardo Henrique Oliveira",
-      "email": "leo@example.com",
-      "telefone": "(35) 99999-0000",
-      "carro": "Onix",
-      "cor": "Preto",
-      "placa": "ABC-1234",
-      "paradas": "Praça Central|Rodoviária"
+      "nome": "Sample Driver",
+      "email": "driver@example.com",
+      "telefone": "+55 00 00000-0000",
+      "carro": "Example vehicle",
+      "cor": "Blue",
+      "placa": "ABC1D23",
+      "paradas": "Central Square|Bus Station"
     }
   }
 }
@@ -79,11 +79,11 @@ Each offer contains the following fields:
       "id": "user_id_driver",
       "num_vagas": 2,
       "dados_oferta": {
-        "origem": "UNIFAL - Campus Poços",
-        "destino": "Centro",
+        "origem": "UNIFAL Campus",
+        "destino": "Downtown",
         "data_hora": "2026-02-01 18:30",
-        "observacoes": "Saída do estacionamento",
-        "pontos_embarque": "Praça Central|Rodoviária"
+        "observacoes": "Leaving from the parking lot",
+        "pontos_embarque": "Central Square|Bus Station"
       }
     }
   }

@@ -30,8 +30,8 @@ def serialize_stops(stops: List[str]) -> str:
 
 def parse_offer_data(dados_raw: Any) -> List[str]:
     """
-    App Inventor salva 'dados_oferta' como LISTA (global oferta).
-    Mas pode existir caso antigo como string; aqui a gente trata ambos.
+    App Inventor stores 'dados_oferta' as a list (the global offer variable).
+    Older records may contain a string, so both formats are supported.
     """
     if dados_raw is None:
         return []
@@ -87,12 +87,12 @@ class User:
 # -----------------------------
 @dataclass
 class Offer:
-    offer_key: str                 # chave no Firebase (ex: "1", "2", ...)
-    offer_id: str = ""             # campo "id"
-    available_seats: int = 0       # campo "num_vagas"
-    dados_oferta: List[str] = field(default_factory=list)  # LISTA ordenada (igual global oferta)
-    driver_user_id: str = ""       # opcional: "id_ofertador" (se você decidir salvar)
-    payload: Dict[str, Any] = field(default_factory=dict)  # campos extras
+    offer_key: str                 # Firebase key, for example "1" or "2"
+    offer_id: str = ""             # Original App Inventor "id" field
+    available_seats: int = 0       # Original "num_vagas" field
+    dados_oferta: List[str] = field(default_factory=list)  # Ordered offer details
+    driver_user_id: str = ""       # Optional original "id_ofertador" field
+    payload: Dict[str, Any] = field(default_factory=dict)  # Additional fields
 
     @staticmethod
     def from_firebase(offer_key: str, data: Dict[str, Any]) -> "Offer":

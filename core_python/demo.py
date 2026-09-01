@@ -12,8 +12,9 @@ This file demonstrates the main business flows:
 It is intended for demonstration, testing, and portfolio purposes.
 """
 
+from core_python.models import User
 from core_python.repository import JsonRepository
-from core_python.services import UniCarService
+from core_python.services import OfferInput, UniCarService
 
 
 def main():
@@ -24,66 +25,69 @@ def main():
     # -----------------------------
     # Create users
     # -----------------------------
-    driver = service.create_user(
-        name="Leonardo Oliveira",
-        email="driver@unicar.app",
+    driver = service.upsert_user(
+        User(
+            user_id="driver-001",
+            name="Sample Driver",
+            email="driver@example.com",
+            phone="+55 00 00000-0000",
+            car_model="Example vehicle",
+            car_color="Blue",
+            plate="ABC1D23",
+            stops=["Central Square", "Bus Station"],
+        )
     )
 
-    passenger = service.create_user(
-        name="Maria Silva",
-        email="passenger@unicar.app",
+    passenger = service.upsert_user(
+        User(
+            user_id="passenger-001",
+            name="Sample Passenger",
+            email="passenger@example.com",
+            phone="+55 00 00000-0000",
+        )
     )
 
     print("Driver created:", driver)
     print("Passenger created:", passenger)
 
     # -----------------------------
-    # Create ride
+    # Create an offer
     # -----------------------------
-    ride = service.create_ride(
+    offer = service.create_offer(OfferInput(
         driver_id=driver.user_id,
-        origin="UNIFAL Campus",
-        destination="Downtown",
-        datetime_iso="2026-01-26T18:30:00",
-        total_seats=3,
-        notes="Evening ride",
+        seats=3,
+        departure_label="UNIFAL Campus",
+        destination_label="Downtown",
+        hour="18",
+        minute="30",
+        stops_text="Central Square|Bus Station",
+        car_model=driver.car_model,
+        car_color=driver.car_color,
+        plate=driver.plate,
+    ))
+
+    print("\nOffer created:")
+    print(offer)
+
+    # -----------------------------
+    # Passenger selects and confirms the offer
+    # -----------------------------
+    service.select_offer(offer.offer_key)
+    confirmed_offer = service.confirm_selected_offer()
+
+    print("\nOffer after passenger confirmation:")
+    print(confirmed_offer)
+
+    # -----------------------------
+    # Build the external communication message
+    # -----------------------------
+    message = service.build_whatsapp_message(
+        passenger_name=passenger.name,
+        pickup_point="Central Square",
     )
 
-    print("\nRide created:")
-    print(ride)
-
-    # -----------------------------
-    # Passenger joins ride
-    # -----------------------------
-    ride = service.join_ride(
-        ride_id=ride.ride_id,
-        user_id=passenger.user_id,
-    )
-
-    print("\nPassenger joined the ride:")
-    print(ride)
-
-    # -----------------------------
-    # Passenger leaves ride
-    # -----------------------------
-    ride = service.leave_ride(
-        ride_id=ride.ride_id,
-        user_id=passenger.user_id,
-    )
-
-    print("\nPassenger left the ride:")
-    print(ride)
-
-    # -----------------------------
-    # Driver cancels ride
-    # -----------------------------
-    ride = service.cancel_ride(
-        ride_id=ride.ride_id,
-        driver_id=driver.user_id,
-    )
-
-    print("\nRide canceled:")
-    print(ride)
+    print("\nGenerated passenger message:")
+    print(message)
 
 
 if __name__ == "__main__":

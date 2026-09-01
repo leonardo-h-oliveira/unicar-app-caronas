@@ -25,7 +25,7 @@ class OfferInput:
     driver_id: str
     seats: int
     departure_label: str          # e.g., "Unifal", "Downtown", "Campus"
-    destination_label: str        # e.g., "Rodoviária"
+    destination_label: str        # e.g., "Bus Station"
     hour: str                     # "08"
     minute: str                   # "30"
     stops_text: str               # "A|B|C" or any readable string
@@ -118,7 +118,7 @@ class UniCarService:
             driver_user_id=str(offer_in.driver_id),
             offer_id=str(offer_in.driver_id),      # App Inventor field "id" = driver id
             available_seats=seats,
-            ride_text="",
+            dados_oferta=details,
             payload={},
         )
 
@@ -245,8 +245,8 @@ class UniCarService:
         result: List[str] = []
         for o in offers:
             title = o.payload.get("title")
-            if not title and o.ride_text:
-                title = o.ride_text
+            if not title and o.dados_oferta:
+                title = o.dados_oferta[0]
             if not title:
                 title = f"Offer {o.offer_key}"
             result.append(f"[{o.offer_key}] {title} | Seats: {o.available_seats}")
