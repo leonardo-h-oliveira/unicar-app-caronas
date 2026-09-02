@@ -45,6 +45,14 @@ python -m core_python.demo
 
 [Smart Carpool](https://github.com/leonardo-h-oliveira/smart-carpool) is a separate web portfolio project by Leonardo Henrique Oliveira. It addresses the same broad subject, but it is not a new version of UniCar and does not share its source code, interface or Git history.
 
+## Academic reference
+
+GOMES, Bruna Helena Antonialli; OLIVEIRA, Leonardo Henrique. **UniCar: um aplicativo de caronas compartilhadas para a Universidade Federal de Alfenas**. Trabalho de Conclusão de Curso, Bacharelado Interdisciplinar em Ciência e Tecnologia, Universidade Federal de Alfenas, Poços de Caldas, 2025. Advisor: Professor Luiz Felipe Ramos Turci.
+
+[Read the public TCC copy](docs/UniCar_TCC_public.pdf)
+
+The public copy preserves the submitted report while removing the Firebase API key visible in one programming-block figure. The original PDF remains unchanged outside this repository.
+
 ## Authors
 
 Developed by Leonardo Henrique Oliveira and Bruna Helena Antonialli Gomes under the supervision of Professor Luiz Felipe Ramos Turci.
