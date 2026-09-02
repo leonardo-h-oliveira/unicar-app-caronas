@@ -51,7 +51,7 @@ GOMES, Bruna Helena Antonialli; OLIVEIRA, Leonardo Henrique. **UniCar: um aplica
 
 [Read the public TCC copy](docs/UniCar_TCC_public.pdf)
 
-The public copy preserves the submitted report while removing the Firebase API key visible in one programming-block figure. The original PDF remains unchanged outside this repository.
+This public copy preserves the complete submitted report, including the authentication explanation, interface screenshots, test account examples and MIT App Inventor programming blocks. Only the Firebase Web API key value shown twice in Figure 5 was obscured; no explanatory content was removed. The original PDF remains preserved by the authors.
 
 ## Authors
 
