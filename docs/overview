@@ -8,5 +8,5 @@ UniCar focuses on the organization and management of shared carpool offers, allo
 
 The application was implemented using block-based programming through MIT App Inventor and integrates cloud services via Firebase for authentication and real-time data storage.
 
-Although fully functional, UniCar was developed as an academic prototype and was not released for production use.
+The prototype demonstrated the flows documented in the TCC, but it was not released for production use or validated externally with real users.
 

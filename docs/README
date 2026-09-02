@@ -1,68 +1,28 @@
-# UniCar – University Carpooling Application
+# UniCar documentation
 
-Functional prototype of a university carpooling application developed as a Final Undergraduate Project (TCC)  
-in the Interdisciplinary Bachelor’s Degree in Science and Technology (BICT) at UNIFAL-MG, Brazil.
+This directory contains a written record of the UniCar undergraduate project. The notes were organized after the TCC and should be read together with the final academic report.
 
----
+## Original project
 
-## 📌 Overview
+UniCar was an Android prototype built by Leonardo Henrique Oliveira and Bruna Helena Antonialli Gomes with MIT App Inventor, Firebase Authentication, Firebase Realtime Database and TinyDB. The final report contains the original interface screenshots and programming blocks.
 
-UniCar is a mobile application prototype designed to address mobility challenges within a university environment.
-The system allows students to offer and request carpools in a structured, organized, and controlled manner.
+The original App Inventor project file and image assets are not currently included in this repository. This documentation does not recreate or replace those artifacts.
 
-The project focuses on **system architecture**, **business logic**, **data modeling**, and **user flow management**,
-rather than production deployment.
+## Documents in this directory
 
----
+- `academic-context`: authorship, academic scope and repository limitations
+- `overview`: short description of the problem and prototype
+- `features`: functions demonstrated in the academic prototype
+- `user-flow`: login, ride offer, ride request and contact flows
+- `business-rules`: rules described for users, offers and available seats
+- `data-model`: how Firebase and TinyDB were used
+- `architecture`: original App Inventor-based organization
+- `technical-decisions.md`: reasons for the main technology choices
 
-## 🎯 Project Objectives
+## Later Python exercise
 
-- Design a functional carpooling system for academic environments
-- Apply software engineering principles in a mobile context
-- Model business rules and data consistency constraints
-- Integrate cloud-based persistence with local state management
-- Document architectural and technical decisions clearly
+The repository root also contains `core_python/`. That directory was created later by Leonardo as a programming exercise based on a subset of the same domain. It is not the source code of UniCar, was not part of the submitted TCC and should not be attributed to both original authors.
 
----
+## Separate project
 
-## 🧠 Core Features
-
-- User registration and authentication
-- Carpool offer creation and management
-- Dynamic visualization of available carpools
-- Seat availability control
-- Boarding point selection
-- Passenger–driver communication via WhatsApp
-- Hybrid data persistence (Firebase + TinyDB)
-
----
-
-## 🏗️ System Architecture
-
-The application follows a modular and event-driven architecture, composed of:
-
-- **Presentation Layer**: Screen-based UI implemented in MIT App Inventor
-- **Business Logic Layer**: Validation rules, offer lifecycle control, and state management
-- **Data Layer**: Firebase Realtime Database and local persistence via TinyDB
-
-A complete architectural description is available in `/docs/architecture.md`.
-
----
-
-## 📂 Repository Structure
-
-```text
-unicar-app-carpooling/
-├── README.md
-├── docs/
-│   ├── overview.md
-│   ├── architecture.md
-│   ├── features.md
-│   ├── user-flow.md
-│   ├── business-rules.md
-│   ├── data-model.md
-│   ├── technical-decisions.md
-│   └── academic-context.md
-├── app-inventor/
-├── imagens/
-└── core_python/
+Smart Carpool is a different web portfolio project. The two projects share a subject area, but not source code, interface, architecture or Git history.

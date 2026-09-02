@@ -75,21 +75,10 @@ The UniCar project demonstrates:
 
 ---
 
-## Transition to Portfolio Project
+## What this repository represents
 
-After academic evaluation, the UniCar repository was reorganized and expanded to serve as a **technical portfolio project**.
+The public repository was organized after the TCC to make the academic project easier to understand. It should not be read as the original development repository or as evidence that the prototype was prepared for production.
 
-This transition included:
-- Documentation refactoring to English
-- Modular architectural descriptions
-- Clear separation between academic context and professional presentation
+The `core_python` directory is a later programming exercise created by Leonardo. It is not part of the application built with Bruna Helena Antonialli Gomes and does not replace the MIT App Inventor blocks documented in the final report.
 
-This allows the project to be evaluated both as an academic work and as a demonstration of software engineering skills.
-
----
-
-## Summary
-
-UniCar originated as an academic project and evolved into a documented system prototype.
-Its academic foundation provided a structured environment for learning and experimentation,
-while its final organization supports professional portfolio presentation.
+UniCar is presented in the portfolio for what it was: a functional academic prototype, produced by two students and evaluated as a final undergraduate project.

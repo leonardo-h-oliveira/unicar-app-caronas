@@ -8,7 +8,7 @@ The project explored how to organize ride offers and requests within a universit
 
 The original Android prototype was built with MIT App Inventor, Firebase Authentication, Firebase Realtime Database and TinyDB local storage.
 
-This repository preserves the project documentation and a Python representation of its main entities and business rules. Its purpose is to document the work completed for the undergraduate project, not to distribute a production application.
+This repository is a public record of the academic project. It summarizes the prototype described in the final report and also contains a small Python study of some domain rules. The Python files were added later for learning purposes: they are not the source code of the Android prototype and were not part of the submitted application.
 
 ## Repository contents
 
@@ -23,8 +23,8 @@ unicar-app-caronas/
 └── README.md
 ```
 
-- `docs/`: requirements, workflows, business rules and technical decisions
-- `core_python/`: a runnable representation of the domain entities, in-memory repository and services
+- `docs/`: notes based on the academic report, including scope, workflows and limitations
+- `core_python/`: a later, independent exercise that represents a subset of the domain in Python
 
 Run the Python demonstration with:
 
@@ -41,9 +41,9 @@ python -m core_python.demo
 - Local and remote data persistence
 - Driver and passenger communication after confirmation
 
-## Continuation
+## Related portfolio project
 
-The requirements and lessons from UniCar led to [Smart Carpool](https://github.com/leonardo-h-oliveira/smart-carpool), a web implementation with a relational database, API, automated tests and a published demonstration.
+[Smart Carpool](https://github.com/leonardo-h-oliveira/smart-carpool) is a separate web portfolio project by Leonardo Henrique Oliveira. It addresses the same broad subject, but it is not a new version of UniCar and does not share its source code, interface or Git history.
 
 ## Authors
 
